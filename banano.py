@@ -1,4 +1,4 @@
-class Fresa:
+class Banano:
     x = 0
     y = 0
     step = 44

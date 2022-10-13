@@ -1,6 +1,6 @@
 from pygame.locals import *
 import pygame
-
+import sys
 
 class Jugador:
     x = [0]
@@ -27,8 +27,8 @@ class Jugador:
     def update(self):
 
 
-        # sirve para poner o cambiar la velocidad para los niveles
-        self.updateCuenta = self.updateCuenta + 1
+
+        self.updateCuenta = self.updateCuenta + 1   # sirve para poner o cambiar la velocidad para los niveles
         if self.updateCuenta > self.updateCuentaMax:
 
             # actualiza posiciones anteriores
@@ -63,3 +63,6 @@ class Jugador:
     def draw(self, surface, image):
         for i in range(0, self.longitud):
             surface.blit(image, (self.x[i], self.y[i]))
+
+    def salir(self):
+        return sys.exit()

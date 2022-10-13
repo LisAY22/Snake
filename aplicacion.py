@@ -5,6 +5,7 @@ from manzana import *
 from random import randint
 import pygame
 import time
+import sys
 
 
 class Aplicacion:
@@ -24,6 +25,7 @@ class Aplicacion:
         self.jugador = Jugador(3)
         self.manzana = Manzana(5, 5)
         self.fresa = Manzana(3, 3)
+        self.banano = Manzana(3, 4)
 
     def on_init(self):
         pygame.init()
@@ -32,9 +34,10 @@ class Aplicacion:
         pygame.display.set_caption('Ejemplo de juego Snake aprenderPython.net')
         self._running = True
         # cambiar imagenes
-        self._image_surf = pygame.image.load("cuadrado.jpg").convert()
-        self._manzana_surf = pygame.image.load("manzana.png").convert()
-        self._fresa_surf = pygame.image.load("fresa.jpg").convert()
+        self._image_surf = pygame.image.load("imagenes/cuadrado.jpg").convert()
+        self._manzana_surf = pygame.image.load("imagenes/manzana.png").convert()
+        self._fresa_surf = pygame.image.load("imagenes/fresa.jpg").convert()
+        self._banano_surf = pygame.image.load("imagenes/banano.jpg").convert()
 
     def on_event(self, event):
         if event.type == QUIT:
@@ -50,14 +53,17 @@ class Aplicacion:
                 self.manzana.y = randint(2, 9) * 44
                 # Esto sirve para que aumenten los cuadritos cuando se come
                 # para las diferntes frutas
-                self.jugador.longitud = self.jugador.longitud + 1
+                self.jugador.longitud = self.jugador.longitud + 1  # sirve para que le sume uno cuadro media vez que come la fruta manzana
 
             elif self.juego.isCollision(self.fresa.x, self.fresa.y, self.jugador.x[i], self.jugador.y[i], 44):
                 self.fresa.x = randint(2, 9) * 44
                 self.fresa.y = randint(2, 9) * 44
-                # Esto sirve para que aumenten los cuadritos cuando se come
-                # para las diferntes frutas
-                self.jugador.longitud = self.jugador.longitud + 2
+                self.jugador.longitud = self.jugador.longitud + 2 # sirve para que le sume dos cuadro media vez que come la fruta fresa
+
+            elif self.juego.isCollision(self.banano.x, self.banano.y, self.jugador.x[i], self.jugador.y[i], 44):
+                self.banano.x = randint(2, 9) * 44
+                self.banano.y = randint(2, 9) * 44
+                self.jugador.longitud = self.jugador.longitud + 3 # sirve para que le sume tres cuadro media vez que come la fruta banano
 
 
         # chocas consigo mismo
@@ -106,5 +112,8 @@ class Aplicacion:
             self.on_loop()
             self.on_render()
 
-            time.sleep(50.0 / 1000.0);
+            time.sleep(50.0 / 1000.0)# aqui va velocidad en que va el juego
         self.on_cleanup()
+
+    def salir(self):
+        return sys.exit()
