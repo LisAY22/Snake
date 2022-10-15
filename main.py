@@ -21,19 +21,28 @@ while True:
     print('5- Salir')
     opcion = int(input('Ingrese los opciones: '))
     if opcion == 1:
+
         aplicacion = Aplicacion()
         aplicacion.on_execute()
-        Jugador.update()
+        aplicacion = Jugador()
+        aplicacion.update()
+
+
 
     elif opcion == 2:
         aplicacion = Aplicacion()
         aplicacion.on_execute()
+        aplicacion = Jugador()
+        aplicacion.update1()
+
     elif opcion == 3:
         aplicacion = Aplicacion()
         aplicacion.on_execute()
+
     elif opcion == 4:
         aplicacion = Aplicacion()
         aplicacion.on_execute()
+
     elif opcion == 5:
         break
     else:

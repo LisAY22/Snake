@@ -26,9 +26,8 @@ class Jugador:
 
     def update(self):
 
+        self.updateCuenta = self.updateCuenta + 1  # sirve para poner o cambiar la velocidad para los niveles
 
-
-        self.updateCuenta = self.updateCuenta + 1   # sirve para poner o cambiar la velocidad para los niveles
         if self.updateCuenta > self.updateCuentaMax:
 
             # actualiza posiciones anteriores
@@ -47,6 +46,29 @@ class Jugador:
                 self.y[0] = self.y[0] + self.pasos
 
             self.updateCuenta = 0
+
+    def update1(self):
+
+        self.update1Cuenta = self.update1Cuenta + 10  # sirve para poner o cambiar la velocidad para los niveles
+
+        if self.update1Cuenta > self.update1CuentaMax:
+
+            # actualiza posiciones anteriores
+            for i in range(self.longitud - 1, 0, -1):
+                self.x[i] = self.x[i - 1]
+                self.y[i] = self.y[i - 1]
+
+            # actualiza la posicion de la cabeza de la serpiente
+            if self.direccion == 0:
+                self.x[0] = self.x[0] + self.pasos
+            if self.direccion == 1:
+                self.x[0] = self.x[0] - self.pasos
+            if self.direccion == 2:
+                self.y[0] = self.y[0] - self.pasos
+            if self.direccion == 3:
+                self.y[0] = self.y[0] + self.pasos
+
+            self.update1Cuenta = 0
 
     def moveRight(self):
         self.direccion = 0

@@ -31,7 +31,7 @@ class Aplicacion:
         pygame.init()
         self._display_surf = pygame.display.set_mode((self.windowWidth, self.windowHeight), pygame.HWSURFACE)
 
-        pygame.display.set_caption('Ejemplo de juego Snake aprenderPython.net')
+        pygame.display.set_caption('El juego de la serpiente')# aqui es la pestaña cuando se ejecuta es el mensaje que sale
         self._running = True
         # cambiar imagenes
         self._image_surf = pygame.image.load("imagenes/cuadrado.jpg").convert()
@@ -77,10 +77,13 @@ class Aplicacion:
         # pass
 
     def on_render(self):
+        # aqui sirve para imprimir el imagen
         self._display_surf.fill((0, 0, 0))
         self.jugador.draw(self._display_surf, self._image_surf)
         self.manzana.draw(self._display_surf, self._manzana_surf)
         self.fresa.draw(self._display_surf, self._fresa_surf)
+        self.banano.draw(self._display_surf, self._banano_surf)
+
         pygame.display.flip()
 
     def on_cleanup(self):
